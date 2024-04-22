@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главная - DemoHelper</title>
+    <link rel="shortcut icon" href="img/rocklogo.png">
+    <link href='boxicons/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="css/main2.css">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+    <header class="">
+        <a class="logo" href="">Demo<span>Helper</span></a>
+        <ul class="navlist">
+            <li><a style="color: var(--main-color);" href="index.html">Главная</a></li>
+        </ul>
+    </header>
+
+    <!-- Секция #1 - Главная страница, Рокстар Клиента и ниже описание, справа меню -->
+    <img class="bg-img" alt="">
+    <div class="gradient"></div>
+    <div class="transition"></div> <!-- Переход между секциями -->
+
+    <section id="main">
+        <div class="page-text">
+            <h1 class="main-text anim">Побеждай в <br> 🥶 <span class="minecraft">ДемоЭкзамен</span>  🥶<br>  прямо сейчас!</h1>
+            <p class="desc-text anim">Встречайте легальный бесплатный хелпер с красивой <br> визуальной составляющией на русском и <br> ZOV </p>
+
+        </div>
+    </section>
+
+    <section id="main">
+        <div class="page-text">
+            <p class="desc-text anim">Сайт в разработке</p>
+            <p class="desc-text anim">Сайт в разработке</p>
+            <p class="desc-text anim">Сайт в разработке</p>
+            <p class="desc-text anim">Сайт в разработке</p>
+            <p class="desc-text anim">Сайт в разработке</p>
+            <p class="desc-text anim">Сайт в разработке</p>
+            <p class="desc-text anim">Сайт в разработке</p>
+            <p class="desc-text anim">Сайт в разработке</p>
+
+        </div>
+    </section>
+    <script>
+
+        // Loading page
+        window.onload = function () {
+          document.body.classList.add('loaded_hiding');
+          window.setTimeout(function () {
+            document.body.classList.add('loaded');
+            document.body.classList.remove('loaded_hiding');
+          }, 500);
+        }
+
+        //Sticky header 
+        document.addEventListener("DOMContentLoaded", function() {
+            const header = document.querySelector("header");
+            window.addEventListener("scroll", function() { 
+                header.classList.toggle("sticky", window.scrollY > 20);
+            });
+        });
+        
+        //Counter
+let valueDisplays = document.querySelectorAll(".desc-count");
+let interval = 2000;
+let maxEndValue = 0;
+let numSteps = 1000; // Количество шагов, которые вы хотите для анимации
+
+valueDisplays.forEach((valueDisplay) => {
+   let endValue = parseInt(valueDisplay.getAttribute("data-val"));
+   maxEndValue = Math.max(maxEndValue, endValue);
+});
+
+let duration = Math.floor(interval / numSteps);
+
+valueDisplays.forEach((valueDisplay) => {
+   let startValue = 0;
+   let endValue = parseInt(valueDisplay.getAttribute("data-val"));
+   let increment = (endValue - startValue) / numSteps;
+   let step = 0;
+
+   let counter = setInterval(function () {
+      startValue += increment;
+      step++;
+      valueDisplay.textContent = Math.round(startValue);
+      if (step >= numSteps) {
+          clearInterval(counter);
+          valueDisplay.textContent = endValue; // Убедимся, что конечное значение точное
+      }
+   }, duration);
+});
+
+
+        
+
+        
+    </script>
+</body>
+</html>
